@@ -83,6 +83,7 @@ class SSRDirectResidual(SINetworkBase):
     def _create_model(self):
         self.de_info = self.config['directE']
         self.network_info = self.config['network']
+        self.offs = self.config['offset']
 
         network = instantiate_network(self.de_info['name'], custom_nets=globals())
         network.configure(self.de_info)
@@ -98,8 +99,10 @@ class SSRDirectResidual(SINetworkBase):
 
         self.add_config_option('directE', co_type='str', co_default=directE_def)
         self.add_config_option('network', co_type='str', co_default=network_def)
+        self.add_config_option('offset', co_type='float', co_default=0)
 
     def forward(self, x):
+        x = x + self.offs
         spec_ini = self.de_network(x)
         spec_res = self.spec_residual_network(x)
 
