@@ -1,6 +1,6 @@
 # ntire2020_entry
 This repository contains our entry for the NTIRE 2020 challenge on spectral reconstruction from RGB.
-The processed test images are located for both tracks in /model_clean and /model_real.
+The processed test images are located for both tracks in /out_clean and /out_real.
 
 ## Recreating the results
 The pretrained networks including the code to run them are provided.
